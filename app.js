@@ -56,4 +56,20 @@ app.post('/requests', (req, res) => {
     res.status(200).send({'request_id' :id}); 
 });
 
+app.post('/offers', (req, res) => {
+    const payload = req.body;
+    if(!payload.user_id) {
+        return res.status(404).send({error: 'user id missing'});
+    }
+    const userOffers = offers[payload.user_id];
+    if(!userOffers) {
+        offers[payload.user_id] = [{...payload, id }];
+    } else {        
+        id = userOffers.length + 1;
+        userOffers.push({...payload, id });
+    }
+    res.status(200).send({'offer_id' :id}); 
+});
+
+
 app.listen(port, () => console.log(`App listening on port ${port}!`));
