@@ -1,0 +1,25 @@
+{
+  "name": "hola-api",
+  "version": "1.0.0",
+  "description": "simple place request and offer api",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/regotiss/hola-api.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "regotiss",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/regotiss/hola-api/issues"
+  },
+  "homepage": "https://github.com/regotiss/hola-api#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
