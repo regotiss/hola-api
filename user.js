@@ -36,6 +36,10 @@ const getUser = (mobile_number) => {
     return users.find(user => user.mobile_number === mobile_number);
 }
 
+const getUserById = (userId) => {
+    return users.find(user => user.id === userId);
+}
+
 const userExistsHandler = (req, res, next) => {
     const userId = req.params.userId;
     if(!users.some(user => user.id == userId)) {
@@ -43,4 +47,4 @@ const userExistsHandler = (req, res, next) => {
     }
     next();
 }
-module.exports = { signupHandler, loginHandler, userExistsHandler, getUser };
+module.exports = { signupHandler, loginHandler, userExistsHandler, getUserById };
