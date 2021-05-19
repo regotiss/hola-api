@@ -43,4 +43,4 @@ const userExistsHandler = (req, res, next) => {
     }
     next();
 }
-module.exports = { signupHandler, loginHandler, userExistsHandler };
+module.exports = { signupHandler, loginHandler, userExistsHandler, getUser };
