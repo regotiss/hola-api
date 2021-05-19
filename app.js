@@ -5,6 +5,7 @@ const port = 3000;
 const MOBILE_NUMBER_REGEX = /^\d{10}$/;
 const users = {};
 const requests = {};
+const offers = {};
 let count = 1;
 
 app.use(express.json())
@@ -30,6 +31,15 @@ app.post('/login', (req, res) => {
     res.status(200).send(user);
 });
 
+app.post('/user/requests', (req, res) => {
+    const payload = req.body;
+    if(!payload.user_id) {
+        return res.status(404).send({error: 'user id missing'});
+    }
+    const userRequests = requests[payload.user_id];
+    res.status(200).send({'requests' :userRequests || []}); 
+});
+
 app.post('/requests', (req, res) => {
     const payload = req.body;
     if(!payload.user_id) {
@@ -45,6 +55,5 @@ app.post('/requests', (req, res) => {
     }
     res.status(200).send({'request_id' :id}); 
 });
-
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));
